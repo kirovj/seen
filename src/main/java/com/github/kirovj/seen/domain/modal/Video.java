@@ -2,11 +2,11 @@ package com.github.kirovj.seen.domain.modal;
 
 import com.github.kirovj.seen.domain.enums.VideoType;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
  * Video, contains movie, series, web videos, etc.
@@ -16,17 +16,43 @@ import javax.persistence.Id;
  */
 @Getter
 @Setter
-@Entity
+@MappedSuperclass
 public class Video {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    protected long id;
 
     /**
      * Video name
      */
-    private String name;
+    @Column(length = 128)
+    protected String name;
 
-    private VideoType type;
+    /**
+     * Video type
+     */
+    protected VideoType type;
+
+    /**
+     * create time
+     */
+    @CreationTimestamp
+    protected Timestamp ctime;
+
+    /**
+     * last modify time
+     */
+    @UpdateTimestamp
+    protected Timestamp mtime;
+
+    /**
+     * is valid
+     */
+    protected boolean valid = true;
+
+    /**
+     * is watched
+     */
+    protected boolean watched = false;
 }

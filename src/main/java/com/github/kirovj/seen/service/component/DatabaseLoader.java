@@ -1,6 +1,6 @@
 package com.github.kirovj.seen.service.component;
 
-import com.github.kirovj.seen.domain.enums.VideoType;
+import com.github.kirovj.seen.domain.enums.Type;
 import com.github.kirovj.seen.domain.modal.Video;
 import com.github.kirovj.seen.service.dao.VideoRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -25,9 +25,9 @@ public class DatabaseLoader implements CommandLineRunner {
         var v2 = new Video();
 
         v1.setName("testMovie");
-        v1.setType(VideoType.Movie);
+        v1.setType(Type.Movie);
         v2.setName("testSeries");
-        v2.setType(VideoType.Series);
+        v2.setType(Type.Series);
         repository.save(v1);
         repository.save(v2);
 //        this.repository.save(Video.builder().name("testMovie").type(VideoType.Movie).build());

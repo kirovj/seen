@@ -33,4 +33,8 @@ public class VideoService {
     public Video findById(long id) {
         return videoRepository.findById(id).orElse(null);
     }
+
+    public void save(Video video) {
+        videoRepository.save(video);
+    }
 }

@@ -20,59 +20,47 @@ import java.sql.Timestamp;
 public class Video {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    protected long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     /**
      * Video name
      */
     @Column(length = 128)
-    protected String name;
+    private String name;
 
     /**
      * Video type
      */
-    protected Type type;
+    private Type type;
 
     /**
      * create time
      */
     @CreationTimestamp
-    protected Timestamp ctime;
+    private Timestamp createTime;
 
     /**
      * last modify time
      */
     @UpdateTimestamp
-    protected Timestamp mtime;
+    private Timestamp modifyTime;
 
     /**
      * 封面图片 base64
      */
     @Column(columnDefinition = "TEXT")
-    private String img;
+    private String image;
 
     /**
      * is valid
      */
-    protected boolean valid = true;
+    private boolean valid = true;
 
     /**
      * is watched
      */
-    protected boolean watched = false;
-
-    /* --------------- private --------------- */
-
-    /**
-     * 评分
-     */
-    private float rating;
-
-    /**
-     * 评分人数
-     */
-    private int ratingCnt;
+    private boolean watched = false;
 
     /**
      * 年份
@@ -108,75 +96,4 @@ public class Video {
      */
     @Column(columnDefinition = "TEXT")
     private String comment;
-
-    /* ------------- Builder -------------- */
-
-    public static Video builder() {
-        return new Video();
-    }
-
-    public Video name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public Video type(Type type) {
-        this.type = type;
-        return this;
-    }
-
-    public Video img(String img) {
-        this.img = img;
-        return this;
-    }
-
-    public Video valid(boolean valid) {
-        this.valid = valid;
-        return this;
-    }
-
-    public Video watched(boolean watched) {
-        this.watched = watched;
-        return this;
-    }
-
-    public Video rating(float rating) {
-        this.rating = rating;
-        return this;
-    }
-
-    public Video ratingCnt(int ratingCnt) {
-        this.ratingCnt = ratingCnt;
-        return this;
-    }
-
-    public Video year(int year) {
-        this.year = year;
-        return this;
-    }
-
-    public Video date(String date) {
-        this.date = date;
-        return this;
-    }
-
-    public Video country(String country) {
-        this.country = country;
-        return this;
-    }
-
-    public Video director(String director) {
-        this.director = director;
-        return this;
-    }
-
-    public Video intro(String intro) {
-        this.intro = intro;
-        return this;
-    }
-
-    public Video comment(String comment) {
-        this.comment = comment;
-        return this;
-    }
 }

@@ -10,7 +10,7 @@ import java.util.List;
  * @author : kirovj
  * @date : 2021/10/10 17:28
  */
-interface VideoRepository extends PagingAndSortingRepository<Video, Long> {
+interface VideoRepository extends PagingAndSortingRepository<Video, Integer> {
 
     List<Video> findAllByValid(boolean valid);
 

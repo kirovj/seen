@@ -1,4 +1,4 @@
-package com.github.kirovj.seen.component;
+package com.github.kirovj.seen.component.crawler;
 
 import com.github.kirovj.seen.domain.modal.Video;
 

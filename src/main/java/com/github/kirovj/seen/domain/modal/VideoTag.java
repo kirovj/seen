@@ -1,6 +1,5 @@
 package com.github.kirovj.seen.domain.modal;
 
-import com.github.kirovj.seen.domain.enums.Type;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,12 +20,10 @@ import javax.persistence.Id;
 public class VideoTag {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    protected long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected int id;
 
-    private Type type;
-
-    private long videoId;
+    private int videoId;
 
     private int tagId;
 }

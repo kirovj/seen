@@ -29,7 +29,7 @@ public class VideoService {
         return videoRepository.findAllByValid(true);
     }
 
-    public Video findById(long id) {
+    public Video findById(int id) {
         return videoRepository.findById(id).orElse(null);
     }
 

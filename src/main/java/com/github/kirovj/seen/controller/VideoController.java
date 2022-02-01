@@ -28,13 +28,13 @@ public class VideoController {
         return videoService.find(searcher);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/videos")
     public List<Video> listAll() {
         return videoService.findAll();
     }
 
     @GetMapping("/video1")
     public Video get() {
-        return videoService.findById(1L);
+        return videoService.findById(1);
     }
 }

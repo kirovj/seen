@@ -1,6 +1,6 @@
-package com.github.kirovj.seen.component.impl;
+package com.github.kirovj.seen.component.crawler.impl;
 
-import com.github.kirovj.seen.component.VideoInfoCrawl;
+import com.github.kirovj.seen.component.crawler.VideoInfoCrawl;
 import com.github.kirovj.seen.domain.modal.Video;
 
 /**

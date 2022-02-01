@@ -2,7 +2,6 @@ package com.github.kirovj.seen.service;
 
 import com.github.kirovj.seen.domain.entity.Searcher;
 import com.github.kirovj.seen.domain.modal.Video;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

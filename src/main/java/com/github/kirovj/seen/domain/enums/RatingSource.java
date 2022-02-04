@@ -7,6 +7,5 @@ package com.github.kirovj.seen.domain.enums;
  * @date : 2022/2/1 22:41
  */
 public enum RatingSource {
-    Me,
-    Douban,
+    Me, Douban, IMDB
 }

@@ -3,6 +3,7 @@ package com.github.kirovj.seen.controller;
 import com.github.kirovj.seen.domain.modal.Tag;
 import com.github.kirovj.seen.service.TagService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,7 @@ public class TagController {
         this.tagService = tagService;
     }
 
-    @GetMapping("/tags")
+    @GetMapping("/all")
     public List<Tag> all() {
         return tagService.findAll();
     }

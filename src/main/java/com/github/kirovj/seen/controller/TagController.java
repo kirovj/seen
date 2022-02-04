@@ -3,6 +3,7 @@ package com.github.kirovj.seen.controller;
 import com.github.kirovj.seen.domain.modal.Tag;
 import com.github.kirovj.seen.service.TagService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * @date : 2022/2/1 23:21
  */
 @RestController
+@RequestMapping("/tag")
 public class TagController {
 
     private final TagService tagService;

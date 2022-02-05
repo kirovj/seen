@@ -24,9 +24,9 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
         return switch (body) {
-            case Response<?> r -> r;
-            case null -> Response.err("not found");
+            case Response<?> res -> res;
             case HashMap<?, ?> map -> Response.errFromSpringMap(map);
+            case null -> Response.err("not found");
             default -> Response.ok(body);
         };
     }

@@ -18,8 +18,17 @@ public class TagService {
         this.repository = tagRepository;
     }
 
-    public void save(Tag tag) {
-        repository.save(tag);
+    public Tag findByName(String name) {
+        return repository.findByName(name);
+    }
+
+    public Tag save(Tag tag) {
+        return findByName(tag.getName()) == null ? repository.save(tag) : tag;
+    }
+
+    public Tag delete(Tag tag) {
+        repository.delete(tag);
+        return tag;
     }
 
     public List<Tag> findAll() {

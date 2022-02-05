@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date : 2022/2/1 22:50
  */
 interface TagRepository extends JpaRepository<Tag, Integer> {
+    Tag findByName(String name);
 }

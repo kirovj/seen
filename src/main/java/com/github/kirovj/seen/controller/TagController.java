@@ -2,10 +2,7 @@ package com.github.kirovj.seen.controller;
 
 import com.github.kirovj.seen.domain.modal.Tag;
 import com.github.kirovj.seen.service.TagService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +23,15 @@ public class TagController {
     @GetMapping("/all")
     public List<Tag> all() {
         return tagService.findAll();
+    }
+
+    @PostMapping("/add")
+    public Tag add(@RequestBody Tag tag) {
+        return tagService.save(tag);
+    }
+
+    @PostMapping("/delete")
+    public Tag delete(@RequestBody Tag tag) {
+        return tagService.delete(tag);
     }
 }

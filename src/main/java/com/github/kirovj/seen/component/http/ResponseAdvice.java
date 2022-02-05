@@ -26,7 +26,7 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         return switch (body) {
             case Response<?> r -> r;
             case null -> Response.err("not found");
-            case HashMap<?, ?> r -> Response.err((int) r.get("status"), (String) r.get("status"));
+            case HashMap<?, ?> map -> Response.errFromSpringMap(map);
             default -> Response.ok(body);
         };
     }

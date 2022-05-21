@@ -18,6 +18,12 @@ public class EnjoyConfig {
         jvr.setSuffix(".html");
         jvr.setContentType("text/html;charset=UTF-8");
         jvr.setOrder(0);
+
+        var engine = JFinalViewResolver.engine;
+        // 热加载配置能对后续配置产生影响，需要放在最前面
+        engine.setDevMode(true);
+        engine.setBaseTemplatePath(null);
+        engine.setToClassPathSourceFactory();
         return jvr;
     }
 }

@@ -31,20 +31,15 @@ public class DatabaseTest implements CommandLineRunner {
     }
 
     private void initVideos() {
-        var v1 = new Video();
-        v1.setName("testMovie");
-        v1.setType(Type.Movie);
-        var v2 = new Video();
-        v2.setName("testSeries");
-        v2.setType(Type.Series);
+        var v1 = new Video().name("testMovie").type(Type.Movie);
+        var v2 = new Video().name("testSeries").type(Type.Series);
         videoService.save(v1);
         videoService.save(v2);
     }
 
     private void initTags() {
-        Tag t1 = new Tag(), t2 = new Tag();
-        t1.setName("惊悚");
-        t2.setName("科幻");
+        var t1 = new Tag().name("惊悚");
+        var t2 = new Tag().name("科幻");
         tagService.save(t1);;
         tagService.save(t2);
     }

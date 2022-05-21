@@ -12,9 +12,6 @@ public class EnjoyConfig {
     @Bean
     public ViewResolver enjoyViewResolver() {
         var jvr = new JFinalViewResolver();
-        jvr.setDevMode(false);
-        jvr.setSourceFactory(new ClassPathSourceFactory());
-        jvr.setPrefix("/templates/");
         jvr.setSuffix(".html");
         jvr.setContentType("text/html;charset=UTF-8");
         jvr.setOrder(0);
@@ -22,7 +19,7 @@ public class EnjoyConfig {
         var engine = JFinalViewResolver.engine;
         // 热加载配置能对后续配置产生影响，需要放在最前面
         engine.setDevMode(true);
-        engine.setBaseTemplatePath(null);
+        engine.setBaseTemplatePath("/templates/");
         engine.setToClassPathSourceFactory();
         return jvr;
     }

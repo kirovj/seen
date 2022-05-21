@@ -2,6 +2,7 @@ package com.github.kirovj.seen.domain.modal;
 
 import com.github.kirovj.seen.domain.enums.Type;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,6 +17,7 @@ import java.sql.Timestamp;
  */
 @Getter
 @Setter
+@Accessors(chain = true)
 @Entity
 public class Video {
 

@@ -17,7 +17,7 @@ public class AuthConfigTest implements CommandLineRunner {
     private AuthConfig config;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         Assert.assertTrue(config.check("guest", "guest"));
     }
 }

@@ -2,9 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Seen</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="static/jquery-3.6.0.slim.min.js"></script>
+    <script src="static/bootstrap.min.js"></script>
 </head>
 <body>
-<p>#(name)</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="videos">
+            #for(video : videoList)
+            <div class="thumbnail">
+                <div>
+                    <div class="video-poster-div">
+                        <img class="video-poster-img" src="#(video.image)" alt="#(video.name)">
+                    </div>
+                    <div class="video-info">
+                        <h3 id="video-name-zh-#(video.id)">
+                            #(video.name)
+                        </h3>
+                        <span id="watched-label-#(video.id)"
+                              class="label label-default"
+                              onclick="#">已看</span>
+                        <div class="video-info-div">
+                            <span>类型：#(video.type)</span><br>
+                            <span>导演：#(video.director)</span><br>
+                            <span>制片国家/地区：#(video.country)</span><br>
+                            <span>上映日期：#(video.date)</span><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="caption">
+                    <span class="video-intro" id="video-intro-#(video.id)">#(video.intro)</span>
+                </div>
+            </div>
+            #end
+        </div>
+    </div>
+</div>
 </body>
 </html>

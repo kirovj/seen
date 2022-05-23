@@ -17,7 +17,7 @@ import javax.persistence.Id;
  */
 @Getter
 @Setter
-@Accessors(fluent = true)
+@Accessors(chain = true)
 @Entity
 public class VideoTag {
 

@@ -17,7 +17,7 @@ import java.sql.Timestamp;
  */
 @Getter
 @Setter
-@Accessors(fluent = true)
+@Accessors(chain = true)
 @Entity
 public class Video {
 

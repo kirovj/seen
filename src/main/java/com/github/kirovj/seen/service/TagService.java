@@ -23,7 +23,7 @@ public class TagService {
     }
 
     public Tag save(Tag tag) {
-        return findByName(tag.name()) == null ? repository.save(tag) : tag;
+        return findByName(tag.getName()) == null ? repository.save(tag) : tag;
     }
 
     public Tag delete(Tag tag) {

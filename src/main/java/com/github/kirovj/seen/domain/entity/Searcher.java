@@ -1,18 +1,25 @@
 package com.github.kirovj.seen.domain.entity;
 
 import com.github.kirovj.seen.domain.enums.Type;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
- * todo
+ * Searcher
  *
  * @author : kirovj
  * @date : 2021/10/25 1:24
  */
-public record Searcher(String name,
-                       Type type,
-                       boolean valid,
-                       boolean watched,
-                       int year,
-                       String country,
-                       String director) {
+@Getter
+@Setter
+@Accessors(chain = true)
+public class Searcher {
+    private String name;
+    private Type type;
+    private boolean valid;
+    private boolean watched;
+    private int year;
+    private String country;
+    private String director;
 }

@@ -30,4 +30,9 @@ public class VideoController {
     public List<Video> listAll() {
         return videoService.findAll();
     }
+
+    @GetMapping("/findByName")
+    public List<Video> listByName(@RequestParam(value = "name") String name) {
+        return videoService.findAllByName(name);
+    }
 }

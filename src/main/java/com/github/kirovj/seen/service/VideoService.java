@@ -29,6 +29,10 @@ public class VideoService {
         return videoRepository.findAllByValid(true);
     }
 
+    public List<Video> findAllByName(String name) {
+        return videoRepository.findAllByNameContainsIgnoreCase(name);
+    }
+
     public Video findById(int id) {
         return videoRepository.findById(id).orElse(null);
     }

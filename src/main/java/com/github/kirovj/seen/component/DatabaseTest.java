@@ -33,8 +33,10 @@ public class DatabaseTest implements CommandLineRunner {
     private void initVideos() {
         var v1 = new Video().setName("testMovie").setType(Type.Movie);
         var v2 = new Video().setName("testSeries").setType(Type.Series);
+        var v3 = new Video().setName("ADN-123").setType(Type.Adult);
         videoService.save(v1);
         videoService.save(v2);
+        videoService.save(v3);
     }
 
     private void initTags() {

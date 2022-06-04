@@ -4,6 +4,7 @@ import com.github.kirovj.seen.domain.entity.Searcher;
 import com.github.kirovj.seen.domain.enums.CrudStatus;
 import com.github.kirovj.seen.domain.modal.Video;
 import com.github.kirovj.seen.utils.Constants;
+import com.github.kirovj.seen.utils.Tuple;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -64,16 +65,19 @@ public class VideoService {
         return StringUtils.hasLength(video.getName()) && video.getType() != null;
     }
 
-    public CrudStatus add(Video video) {
+    public Tuple<CrudStatus, Video> add(Video video) {
+        CrudStatus status;
         if (checkValid(video)) {
             if (findByName(video.getName()) != null) {
-                return CrudStatus.Exists;
+                status = CrudStatus.Exists;
+            } else {
+                video = videoRepository.save(video);
+                status = CrudStatus.Success;
             }
-            videoRepository.save(video);
-            return CrudStatus.Success;
         } else {
-            return CrudStatus.Invalid;
+            status = CrudStatus.Invalid;
         }
+        return Tuple.of(status, video);
     }
 
     public CrudStatus update(Video video) {

@@ -1,8 +1,10 @@
 package com.github.kirovj.seen.controller;
 
 import com.github.kirovj.seen.domain.entity.Searcher;
+import com.github.kirovj.seen.domain.enums.CrudStatus;
 import com.github.kirovj.seen.domain.modal.Video;
 import com.github.kirovj.seen.service.VideoService;
+import com.github.kirovj.seen.utils.Tuple;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,5 +36,10 @@ public class VideoController {
     @GetMapping("/findByName")
     public List<Video> listByName(@RequestParam(value = "name") String name) {
         return videoService.findAllByName(name);
+    }
+
+    @PostMapping("/add")
+    public Tuple<CrudStatus, Video> add(@RequestBody Video video){
+        return videoService.add(video);
     }
 }

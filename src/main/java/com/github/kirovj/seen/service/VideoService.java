@@ -60,12 +60,12 @@ public class VideoService {
         videoRepository.save(video);
     }
 
-    public boolean check(Video video) {
+    public boolean checkValid(Video video) {
         return StringUtils.hasLength(video.getName()) && video.getType() != null;
     }
 
     public CrudStatus add(Video video) {
-        if (check(video)) {
+        if (checkValid(video)) {
             if (findByName(video.getName()) != null) {
                 return CrudStatus.Exists;
             }

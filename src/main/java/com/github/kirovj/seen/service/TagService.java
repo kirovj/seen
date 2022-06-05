@@ -1,9 +1,9 @@
 package com.github.kirovj.seen.service;
 
+import com.github.kirovj.seen.domain.entity.CrudResult;
+import com.github.kirovj.seen.domain.enums.CrudStatus;
 import com.github.kirovj.seen.domain.modal.Tag;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author : kirovj
@@ -18,20 +18,22 @@ public class TagService {
         this.repository = tagRepository;
     }
 
-    public Tag findByName(String name) {
-        return repository.findByName(name);
+    public CrudResult<Tag> findByName(String name) {
+        return CrudResult.ok(repository.findByName(name));
     }
 
-    public Tag save(Tag tag) {
-        return findByName(tag.getName()) == null ? repository.save(tag) : tag;
+    public CrudResult<Tag> add(Tag tag) {
+        return findByName(tag.getName()).getData() == null
+                ? CrudResult.ok(repository.save(tag))
+                : CrudResult.fail(CrudStatus.Exists);
     }
 
-    public Tag delete(Tag tag) {
+    public CrudResult<Tag> delete(Tag tag) {
         repository.delete(tag);
-        return tag;
+        return CrudResult.ok(tag);
     }
 
-    public List<Tag> findAll() {
-        return repository.findAll();
+    public CrudResult<Tag> findAll() {
+        return CrudResult.ok(repository.findAll());
     }
 }

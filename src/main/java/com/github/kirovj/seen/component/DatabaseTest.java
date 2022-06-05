@@ -34,15 +34,15 @@ public class DatabaseTest implements CommandLineRunner {
         var v1 = new Video().setName("testMovie").setType(Type.Movie);
         var v2 = new Video().setName("testSeries").setType(Type.Series);
         var v3 = new Video().setName("ADN-123").setType(Type.Adult);
-        videoService.save(v1);
-        videoService.save(v2);
-        videoService.save(v3);
+        videoService.add(v1);
+        videoService.add(v2);
+        videoService.add(v3);
     }
 
     private void initTags() {
         var t1 = new Tag().setName("惊悚");
         var t2 = new Tag().setName("科幻");
-        tagService.save(t1);
-        tagService.save(t2);
+        tagService.add(t1);
+        tagService.add(t2);
     }
 }

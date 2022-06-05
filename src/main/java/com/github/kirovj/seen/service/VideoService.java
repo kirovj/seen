@@ -1,10 +1,10 @@
 package com.github.kirovj.seen.service;
 
+import com.github.kirovj.seen.domain.entity.CrudResult;
 import com.github.kirovj.seen.domain.entity.Searcher;
 import com.github.kirovj.seen.domain.enums.CrudStatus;
 import com.github.kirovj.seen.domain.modal.Video;
 import com.github.kirovj.seen.utils.Constants;
-import com.github.kirovj.seen.utils.Tuple;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -31,41 +31,40 @@ public class VideoService {
         return null;
     }
 
-    public List<Video> findAll() {
-        return videoRepository.findAllByValid(true);
+    public CrudResult<Video> findAll() {
+        return CrudResult.ok(videoRepository.findAllByValid(true));
     }
 
     public Video findByName(String name) {
         return videoRepository.findOneByName(name).orElse(null);
     }
 
-    public List<Video> findAllByName(String name) {
+    public CrudResult<Video> findAllByName(String name) {
+        List<Video> videoList;
         // Optimised for jav code
         Matcher matcher = Constants.LETTER_NUMBER.matcher(name);
         if (matcher.matches()) {
             String prefix = matcher.group(1);
             String number = matcher.group(2).replaceFirst("^0*", "");
-            return videoRepository.findAllByNameContainsIgnoreCase(prefix)
+            videoList = videoRepository.findAllByNameContainsIgnoreCase(prefix)
                     .stream()
                     .filter(v -> v.getName().contains(number))
                     .collect(Collectors.toList());
+        } else {
+            videoList = videoRepository.findAllByNameContainsIgnoreCase(name);
         }
-        return videoRepository.findAllByNameContainsIgnoreCase(name);
+        return CrudResult.ok(videoList);
     }
 
     public Video findById(int id) {
         return videoRepository.findById(id).orElse(null);
     }
 
-    public void save(Video video) {
-        videoRepository.save(video);
-    }
-
     public boolean checkValid(Video video) {
         return StringUtils.hasLength(video.getName()) && video.getType() != null;
     }
 
-    public Tuple<CrudStatus, Video> add(Video video) {
+    public CrudResult<Video> add(Video video) {
         CrudStatus status;
         if (checkValid(video)) {
             if (findByName(video.getName()) != null) {
@@ -77,7 +76,7 @@ public class VideoService {
         } else {
             status = CrudStatus.Invalid;
         }
-        return Tuple.of(status, video);
+        return CrudResult.of(status, video);
     }
 
     public CrudStatus update(Video video) {

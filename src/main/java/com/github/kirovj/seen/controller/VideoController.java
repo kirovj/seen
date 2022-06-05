@@ -1,10 +1,11 @@
 package com.github.kirovj.seen.controller;
 
+import com.github.kirovj.seen.domain.entity.CrudResult;
 import com.github.kirovj.seen.domain.entity.Searcher;
-import com.github.kirovj.seen.domain.enums.CrudStatus;
 import com.github.kirovj.seen.domain.modal.Video;
 import com.github.kirovj.seen.service.VideoService;
-import com.github.kirovj.seen.utils.Tuple;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  * @author : kirovj
  * @date : 2021/10/11 1:13
  */
-@RestController
+@Controller
 @RequestMapping("/video")
 public class VideoController {
 
@@ -28,18 +29,17 @@ public class VideoController {
         return videoService.find(searcher);
     }
 
-    @GetMapping("/all")
-    public List<Video> listAll() {
-        return videoService.findAll();
-    }
-
     @GetMapping("/findByName")
-    public List<Video> listByName(@RequestParam(value = "name") String name) {
-        return videoService.findAllByName(name);
+    public String listByName(Model model, @RequestParam(value = "name") String name) {
+        CrudResult<Video> result = videoService.findAllByName(name);
+        model.addAttribute("result", result);
+        return "index";
     }
 
     @PostMapping("/add")
-    public Tuple<CrudStatus, Video> add(@RequestBody Video video){
-        return videoService.add(video);
+    public String add(Model model, @RequestBody Video video) {
+        CrudResult<Video> result = videoService.add(video);
+        model.addAttribute("result", result);
+        return "index";
     }
 }

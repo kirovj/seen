@@ -68,7 +68,7 @@ public class VideoService {
         CrudStatus status;
         if (checkValid(video)) {
             if (findByName(video.getName()) != null) {
-                status = CrudStatus.Exists;
+                status = CrudStatus.Empty;
             } else {
                 video = videoRepository.save(video);
                 status = CrudStatus.Success;

@@ -1,5 +1,6 @@
 package com.github.kirovj.seen.domain.modal;
 
+import com.github.kirovj.seen.domain.enums.Type;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -23,6 +24,8 @@ public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    private Type type;
 
     private String name;
 }

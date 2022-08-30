@@ -40,9 +40,11 @@ public class DatabaseTest implements CommandLineRunner {
     }
 
     private void initTags() {
-        var t1 = new Tag().setName("惊悚");
-        var t2 = new Tag().setName("科幻");
+        var t1 = new Tag().setName("惊悚").setType(Type.Movie);
+        var t2 = new Tag().setName("科幻").setType(Type.Movie);
+        var t3 = new Tag().setName("科幻").setType(Type.Adult);
         tagService.add(t1);
         tagService.add(t2);
+        tagService.add(t3);
     }
 }

@@ -8,6 +8,6 @@ package com.github.kirovj.seen.domain.enums;
  */
 public enum CrudStatus {
     Success,
-    Exists,
+    Empty,
     Invalid
 }

@@ -25,7 +25,7 @@ public class TagService {
     public CrudResult<Tag> add(Tag tag) {
         return findByName(tag.getName()).getData() == null
                 ? CrudResult.ok(repository.save(tag))
-                : CrudResult.fail(CrudStatus.Exists);
+                : CrudResult.fail(CrudStatus.Empty);
     }
 
     public CrudResult<Tag> delete(Tag tag) {

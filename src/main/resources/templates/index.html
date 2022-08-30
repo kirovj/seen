@@ -18,15 +18,22 @@
                     <div class="video-poster-div">
                         <img class="video-poster-img" src="#(video.image)" alt="#(video.name)">
                     </div>
-                    <div class="video-info">
-                        <h3 id="video-name-zh-#(video.id)">
+                    <div id="video-info_#(video.id)" class="video-info">
+                        <h3 id="video-name-zh_#(video.id)">
                             #(video.name)
                         </h3>
-                        <span id="watched-label-#(video.id)"
-                              class="label label-default"
-                              onclick="#">已看</span>
-                        <div class="video-info-div">
-                            <span>类型：#(video.type)</span><br>
+                        <div class="video-info-sub">
+                            <span>类型：
+                                #if (video.type.name() == "Adult")
+                                <span class="label label-warning">#(video.type)</span>
+                                #else if (video.type.name() == "Movie")
+                                <span class="label label-primary">#(video.type)</span>
+                                #else if (video.type.name() == "Series")
+                                <span class="label label-info">#(video.type)</span>
+                                #else
+                                <span class="label label-success">#(video.type)</span>
+                                #end
+                            </span><br>
                             <span>导演：#(video.director)</span><br>
                             <span>制片国家/地区：#(video.country)</span><br>
                             <span>上映日期：#(video.date)</span><br>

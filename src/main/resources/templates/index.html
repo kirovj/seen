@@ -9,41 +9,44 @@
     <script src="bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        #for(video : result.data)
-        <div class="col-sm-3 col-md-2">
-            <div class="thumbnail">
-                <div class="video-poster-div">
-                    <img class="video-poster-img" src="#(video.image)" alt="#(video.name)">
-                </div>
-                <div id="video-info_#(video.id)" class="video-info">
-                    <h3 id="video-name-zh_#(video.id)">
-                        #(video.name)
-                    </h3>
-                    <div class="video-info-sub">
-                        <span>类型：
-                            #if (video.type.name() == "Adult")
-                            <span class="label label-warning">#(video.type)</span>
-                            #else if (video.type.name() == "Movie")
-                            <span class="label label-primary">#(video.type)</span>
-                            #else if (video.type.name() == "Series")
-                            <span class="label label-info">#(video.type)</span>
-                            #else
-                            <span class="label label-success">#(video.type)</span>
-                            #end
-                        </span><br>
-                        <span>导演：#(video.director)</span><br>
-                        <span>制片国家/地区：#(video.country)</span><br>
-                        <span>上映日期：#(video.date)</span><br>
+        <div class="col-md-2">.col-md-1</div>
+        <div class="col-md-10">
+            #for(video : result.data)
+            <div class="col-sm-3 col-md-2">
+                <div class="thumbnail">
+                    <div class="video-poster-div">
+                        <img class="video-poster-img" src="#(video.image)" alt="#(video.name)">
+                    </div>
+                    <div id="video-info_#(video.id)" class="video-info">
+                        <h3 id="video-name-zh_#(video.id)">
+                            #(video.name)
+                        </h3>
+                        <div class="video-info-sub">
+                            <span>类型：
+                                #if (video.type.name() == "Adult")
+                                <span class="label label-warning">#(video.type)</span>
+                                #else if (video.type.name() == "Movie")
+                                <span class="label label-primary">#(video.type)</span>
+                                #else if (video.type.name() == "Series")
+                                <span class="label label-info">#(video.type)</span>
+                                #else
+                                <span class="label label-success">#(video.type)</span>
+                                #end
+                            </span><br>
+                            <span>导演：#(video.director)</span><br>
+                            <span>制片国家/地区：#(video.country)</span><br>
+                            <span>上映日期：#(video.date)</span><br>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <span class="video-intro" id="video-intro-#(video.id)">#(video.intro)</span>
                     </div>
                 </div>
-                <div class="caption">
-                    <span class="video-intro" id="video-intro-#(video.id)">#(video.intro)</span>
-                </div>
             </div>
+            #end
         </div>
-        #end
     </div>
 </div>
 </body>

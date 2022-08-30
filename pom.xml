@@ -65,7 +65,7 @@
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
-            <version>3.36.0.3</version>
+            <version>3.39.2.1</version>
         </dependency>
 
         <dependency>
@@ -77,7 +77,7 @@
         <dependency>
             <groupId>com.konghq</groupId>
             <artifactId>unirest-java</artifactId>
-            <version>3.13.8</version>
+            <version>3.13.11</version>
         </dependency>
 
     </dependencies>
